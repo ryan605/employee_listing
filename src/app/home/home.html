@@ -1,0 +1,110 @@
+<div class="app-layout">
+  <!-- <app-sidebar></app-sidebar> -->
+<main class="main-content">
+  <!-- <app-topbar></app-topbar> -->
+  <div class="dashboard">
+  <header class="page-header">
+    <div>
+      <h1>Employee Management</h1>
+      <p>Manage and view your organization's employees.</p>
+    </div>
+  </header>
+  <!-- Search and filters -->
+  <section class="employee-section">
+    <div class="section-heading">
+      <div>
+        <h2>All Employees</h2>
+        <p>{{ filteredEmployees.length }} employees found</p>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <input
+        type="search"
+        placeholder="Search by name, ID or email..."
+        [(ngModel)]="searchTerm"
+        aria-label="Search employees"
+        class="search-input"
+      />
+
+      <select
+        [(ngModel)]="selectedDepartment"
+        aria-label="Filter by department"
+      >
+        <option value="">All Departments</option>
+        <option *ngFor="let department of departments"
+                [value]="department">
+          {{ department }}
+        </option>
+      </select>
+
+      <select
+        [(ngModel)]="selectedStatus"
+        aria-label="Filter by status"
+      >
+        <option value="">All Statuses</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="On Leave">On Leave</option>
+      </select>
+
+      <button type="button" class="clear-button"
+              (click)="clearFilters()">
+        Clear filters
+      </button>
+    </div>
+
+    <!-- Employee table -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Display ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let employee of filteredEmployees">
+            <td class="employee-id">
+              {{ employee['Display ID'] }}
+            </td>
+
+            <td class="employee-name">
+              {{ employee.Name }}
+            </td>
+
+            <td>{{ employee.Email }}</td>
+
+            <td>{{ employee.Department }}</td>
+
+            <td>
+              <span
+                class="status"
+                [ngClass]="{
+                  'status-active': employee.Status === 'Active',
+                  'status-inactive': employee.Status === 'Inactive',
+                  'status-leave': employee.Status === 'On Leave'
+                }"
+                >
+                {{ employee.Status }}
+              </span>
+            </td>
+          </tr>
+
+          <tr *ngIf="filteredEmployees.length === 0">
+            <td colspan="5" class="empty-state">
+              No employees found. Try changing your search or filters.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</main>
+</div>
+

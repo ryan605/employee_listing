@@ -1,0 +1,48 @@
+
+<aside class="sidebar">
+  <!-- Top section -->
+  <div class="sidebar-top">
+    <a class="brand" routerLink="/home">
+      <span class="brand-icon">S</span>
+      <span>StaffHub</span>
+    </a>
+
+    <p class="menu-label">MAIN MENU</p>
+
+    <nav class="nav-links">
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a routerLink="/home" fragment="employees">
+        <span class="nav-icon">♙</span>
+        <span>Employees</span>
+      </a>
+
+      <a routerLink="/reports" routerLinkActive="active">
+        <span class="nav-icon">▤</span>
+        <span>Reports</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Bottom section -->
+  <div class="sidebar-bottom">
+    <a routerLink="/settings" routerLinkActive="active">
+      <span class="nav-icon">⚙</span>
+      <span>Settings</span>
+    </a>
+
+    <a routerLink="/help" routerLinkActive="active">
+      <span class="nav-icon">?</span>
+      <span>Help &amp; Support</span>
+    </a>
+
+    <button type="button" class="logout-link">
+      <span class="nav-icon">↪</span>
+      <span>Log out</span>
+    </button>
+  </div>
+</aside>
+

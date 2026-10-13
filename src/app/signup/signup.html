@@ -1,0 +1,20 @@
+<form (ngSubmit) = "onSignup()" #signupForm = "ngForm">
+  <div class="parent-div">
+    <div class="child-div">
+      <h2 class="login-title">Signup </h2>
+      <p>Already have an account<a routerLink="/login">Please Log in</a></p>
+      <label for="name">Name</label>
+      <input type="text" name="Name"[(ngModel)]="name" placeholder="enter name" required>
+      <label for="Email">Email</label>
+      <input type="text"name="email" [(ngModel)]="email" placeholder="enter email" required>
+      <label for="password">password</label>
+      <input type="text" name="password"[(ngModel)]="password" placeholder="enter password" required>
+      <label for="department">Department</label>
+      <input type="text" placeholder="Enter department" required>
+      <p class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+      </p>
+      <button type="submit" [disabled]="signupForm.invalid">sign-up</button>
+    </div>
+  </div>
+</form>

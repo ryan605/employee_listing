@@ -1,0 +1,46 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+app-sidebar {
+  display: block;
+  flex: 0 0 250px;
+}
+
+.main-area {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+}
+
+app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: block;
+}
+
+.page-content {
+  flex: 1;
+  min-width: 0;
+  padding: 28px;
+}
+
+@media (max-width: 768px) {
+  app-sidebar {
+    flex-basis: 210px;
+  }
+
+  .page-content {
+    padding: 16px;
+  }
+}

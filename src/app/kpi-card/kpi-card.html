@@ -1,0 +1,24 @@
+
+<article class="kpi-card">
+  <div class="card-top">
+    <span class="card-title">{{ title }}</span>
+
+    <span class="card-icon" aria-hidden="true">
+      {{ icon }}
+    </span>
+  </div>
+
+  <div class="card-value">{{ value }}</div>
+
+  <div class="card-footer">
+    <span
+      class="trend"
+      [class.trend-up]="trend === 'up'"
+      [class.trend-down]="trend === 'down'"
+    >
+      {{ trend === 'up' ? '↑' : '↓' }} {{ change }}
+    </span>
+
+    <span class="description">{{ description }}</span>
+  </div>
+</article>

@@ -1,0 +1,152 @@
+
+<div class="dashboard">
+
+  <header class="page-header">
+    <div>
+      <h1>Overview</h1>
+      <p>Welcome back! Here's what's happening with your business.</p>
+    </div>
+
+    <button class="export-button" type="button">
+      ↗ Export Data
+    </button>
+  </header>
+
+  <!-- Four reusable KPI cards -->
+  <section class="kpi-grid" aria-label="Key performance indicators">
+
+    <app-kpi-card
+      title="Total Sales"
+      value="1,528"
+      icon="▤"
+      change="4.5%"
+      trend="up"
+    />
+
+    <app-kpi-card
+      title="Total Customers"
+      value="11,500"
+      icon="♙"
+      change="4.2%"
+      trend="up"
+    />
+
+    <app-kpi-card
+      title="Total Revenue"
+      value="$32,550"
+      icon="$"
+      change="4.8%"
+      trend="up"
+    />
+
+    <app-kpi-card
+      title="Repeat Buyers"
+      value="640"
+      icon="↻"
+      change="2.1%"
+      trend="down"
+    />
+
+  </section>
+
+  <!-- Charts -->
+  <section class="charts-grid">
+
+    <article class="chart-card">
+      <div class="section-header">
+        <div>
+          <h2>Revenue Overview</h2>
+          <p>Monthly revenue performance</p>
+        </div>
+        <span class="chart-label">2026</span>
+      </div>
+
+      <div class="chart-container">
+        <canvas
+          baseChart
+          [type]="'line'"
+          [data]="revenueData"
+          [options]="revenueOptions"
+          aria-label="Line chart showing monthly revenue">
+        </canvas>
+      </div>
+    </article>
+
+    <article class="chart-card">
+      <div class="section-header">
+        <div>
+          <h2>Monthly Orders</h2>
+          <p>Number of orders received</p>
+        </div>
+        <span class="chart-label">2026</span>
+      </div>
+
+      <div class="chart-container">
+        <canvas
+          baseChart
+          [type]="'bar'"
+          [data]="ordersData"
+          [options]="ordersOptions"
+          aria-label="Bar chart showing monthly orders">
+        </canvas>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Recent orders table -->
+  <section class="orders-card">
+
+    <div class="section-header orders-heading">
+      <div>
+        <h2>Recent Orders</h2>
+        <p>A summary of your latest orders</p>
+      </div>
+
+      <button type="button" class="view-all-button">
+        View all →
+      </button>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let order of recentOrders">
+            <td class="order-id">{{ order.id }}</td>
+            <td>{{ order.customer }}</td>
+            <td>{{ order.product }}</td>
+            <td>{{ order.date }}</td>
+            <td class="amount">
+              {{ order.amount | currency:'USD':'symbol':'1.0-0' }}
+            </td>
+            <td>
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  'completed': order.status === 'Completed',
+                  'pending': order.status === 'Pending',
+                  'processing': order.status === 'Processing',
+                  'cancelled': order.status === 'Cancelled'
+                }">
+                {{ order.status }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+</div>
